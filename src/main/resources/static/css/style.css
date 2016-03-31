@@ -1,0 +1,87 @@
+body {
+    font-family: 'Trebuchet MS';
+    color: #333;
+    background-color: #fff;
+}
+
+header {
+    margin: 0;
+}
+
+#content {
+	min-height: 550px;
+}
+
+footer {
+	clear: both;
+	margin-top: 50px;
+	background-color: #EEE;
+	border-top: 1px solid #D8D8D8;
+	padding: 50px;
+}
+
+.navbar{
+    margin: 0;
+}
+
+.side-nav {
+    width: 100px;
+    height: 100%;
+    border-radius: 0;
+    border: none;
+    overflow-y: auto;
+    color: black;
+}
+
+.side-nav > li {
+    width: 100%;
+    text-align: center;
+}
+
+.side-nav > li > a > i {
+    font-size: 24px;
+}
+
+#header-right-navbar{
+    padding-right: 15px !important;
+}
+.form-signin,.form-signup {
+	margin-top: 200px;
+	max-width: 330px;
+	padding: 15px;
+	padding-top: 100px;
+	margin: 0 auto;
+}
+
+.form-signin .form-signin-heading {
+	text-align: center;
+	margin-bottom: 10px;
+}
+
+.form-signin .form-control {
+	position: relative;
+	height: auto;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	padding: 10px;
+	font-size: 16px;
+}
+
+.form-signin input[type="text"] {
+	margin-bottom: -1px;
+	border-bottom-right-radius: 0;
+	border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="password"] {
+	margin-bottom: 10px;
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
+}
+
+#registerForm {
+	max-width: 500px;
+	margin: auto;
+	padding-top: 50px;
+}
