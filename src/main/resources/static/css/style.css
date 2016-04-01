@@ -4,17 +4,24 @@ body {
     background-color: #fff;
 }
 
+html, body, #wrapper{
+	height: 100%;
+}
+
 header {
     margin: 0;
 }
 
 #content {
 	min-height: 550px;
+	padding:70px;
+	height:100%;
+	margin-top: -51px;
+	margin-bottom: -151px;
 }
 
 footer {
 	clear: both;
-	margin-top: 50px;
 	background-color: #EEE;
 	border-top: 1px solid #D8D8D8;
 	padding: 50px;
@@ -25,12 +32,13 @@ footer {
 }
 
 .side-nav {
-    width: 100px;
+    width: 150px;
     height: 100%;
     border-radius: 0;
     border: none;
     overflow-y: auto;
     color: black;
+    border-right: 1px solid #D8D8D8;
 }
 
 .side-nav > li {
