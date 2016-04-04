@@ -1,10 +1,7 @@
-package pl.ekpir.service;
+package pl.ekpir.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import pl.ekpir.persistence.model.User;
-import pl.ekpir.persistence.repository.IUserRepository;
 
 import javax.transaction.Transactional;
 import java.util.List;
@@ -19,11 +16,12 @@ public class UserService {
     @Autowired
     IUserRepository userRepository;
 
-    public void addUser(User user) {
+    public void registerNewUser(UserEntity user) {
+        user.setRole(RoleEnum.USER);
         userRepository.save(user);
     }
 
-    public List<User> getUsers(){
+    public List<UserEntity> getUsers(){
         return userRepository.findAll();
     }
 }

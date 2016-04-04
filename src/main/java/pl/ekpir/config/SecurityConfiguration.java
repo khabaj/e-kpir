@@ -23,7 +23,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
         		.and()
                 .authorizeRequests()
                 .anyRequest().permitAll()
-                .antMatchers("/api/**", "/h2-console/**").authenticated()
+                .antMatchers("/api/**").authenticated()
                 .and().logout().logoutSuccessUrl("/")
                 .and().csrf().disable();
         
@@ -35,6 +35,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
     	auth.jdbcAuthentication().dataSource(dataSource)
     		.usersByUsernameQuery("select login, password, 'true' from user where login=?")
     		.authoritiesByUsernameQuery(
-    				"select user.login, role.role_name from user, role where user.login=? and user.role_id=role.role_id");
+    				"select user.login, user.role from user where user.login=?");
     }
 }

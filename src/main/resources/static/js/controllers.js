@@ -1,12 +1,12 @@
-
+var headers;
 
 app.controller('navigation', function ($rootScope, $http, $location) {
 
-    var self = this
+    var self = this;
 
     var authenticate = function (credentials, callback) {
 
-        var headers = credentials ? {
+        headers = credentials ? {
             authorization: "Basic "
             + btoa(credentials.username + ":" + credentials.password)
         } : {};
@@ -47,4 +47,20 @@ app.controller('navigation', function ($rootScope, $http, $location) {
             $location.path("/");
         });
     }
+});
+
+
+app.controller('registration', function ($scope, $http, $location) {
+    var self = this;
+
+    self.register = function () {
+
+        var data = {login: self.user.email, password: self.user.password};
+        $http.post('/api/users', data).success(function (data) {
+            self.registered = true;
+        }).finally(function () {
+
+        });
+    }
+
 });

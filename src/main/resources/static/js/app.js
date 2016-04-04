@@ -13,7 +13,7 @@ var app = angular
 						controllerAs : 'controller'
 					}).when('/register', {
 						templateUrl : '/views/registration.html',
-						controller : 'navigation',
+						controller : 'registration',
 						controllerAs : 'controller'
 					}).otherwise('/');
 

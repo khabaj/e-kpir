@@ -1,11 +1,9 @@
-package pl.ekpir.controller;
+package pl.ekpir.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
-
-import pl.ekpir.persistence.model.User;
-import pl.ekpir.service.UserService;
 
 import java.security.Principal;
 import java.util.List;
@@ -23,16 +21,17 @@ public class UserController {
 
     @RequestMapping(method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
-    public void user(@RequestBody User user) {
-        userService.addUser(user);
+    @PreAuthorize("true")
+    public void registerNewUser(@RequestBody UserEntity user) {
+        userService.registerNewUser(user);
     }
 
     @RequestMapping(method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
-    public List<User> user() {
+    public List<UserEntity> getUsersList() {
         return userService.getUsers();
     }
-    
+
     @RequestMapping(value = "/logged", method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
     public Principal user(Principal user) {

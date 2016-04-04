@@ -1,4 +1,4 @@
-package pl.ekpir.persistence.model;
+package pl.ekpir.user;
 
 import javax.persistence.*;
 
@@ -6,8 +6,8 @@ import javax.persistence.*;
  * Created by Krystian on 2016-03-26.
  */
 @Entity
-@Table
-public class User {
+@Table(name = "user")
+public class UserEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -19,16 +19,15 @@ public class User {
 
     @Column
     private String password;
-    
-    @ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "roleId")
-	private Role role;
 
-    public Role getRole() {
+    @Enumerated(EnumType.STRING)
+	private RoleEnum role;
+
+    public RoleEnum getRole() {
 		return role;
 	}
 
-	public void setRole(Role role) {
+	public void setRole(RoleEnum role) {
 		this.role = role;
 	}
 
