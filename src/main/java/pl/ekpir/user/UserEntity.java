@@ -14,7 +14,7 @@ public class UserEntity {
     @Column
     private Integer userId;
 
-    @Column
+    @Column(unique=true)
     private String login;
 
     @Column

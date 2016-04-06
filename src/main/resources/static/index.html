@@ -7,7 +7,7 @@
 
 <link href="webjars/bootstrap/3.3.5/css/bootstrap.min.css"
 	rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="/css/style.css" />
+<link rel="stylesheet" type="text/css" href="common/css/style.css" />
 
 
 </head>
@@ -15,55 +15,19 @@
 
 	<div id="wrapper">
 		<!-- HEADER -->
-		<header>
-			<nav ng-controller="navigation as nav"
-				class="navbar navbar-default navbar-static-top" role="navigation">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle" data-toggle="collapse"
-						data-target=".collapse">
-						<span class="sr-only">Toggle navigation</span> <span
-							class="icon-bar"></span> <span class="icon-bar"></span> <span
-							class="icon-bar"></span>
-					</button>
-					<a class="navbar-brand" href="#/">e-kpir</a>
-				</div>
-				<div class="collapse navbar-collapse ">
-					<ul id="header-right-navbar" class="nav navbar-nav navbar-right">
-						<li ng-show="!authenticated" class="dropdown user-dropdown"><a
-							href="#/register">Załóż konto </a></li>
-						<li ng-show="!authenticated" class="dropdown user-dropdown"><a
-							href="#/login">Zaloguj się </a></li>						
-						<li ng-show="authenticated" class="dropdown"><a href=""
-							class="dropdown-toggle" data-toggle="dropdown" role="button"
-							aria-haspopup="true" aria-expanded="false">{{userName}} <span
-								class="caret"></span></a>
-							<ul class="dropdown-menu">
-								<li><a href="">Ustawienia</a></li>
-								<li role="separator" class="divider"></li>
-								<li><a href="" ng-click="nav.logout()">Wyloguj</a></li>
-							</ul></li>
-					</ul>
-				</div>
-			</nav>
-		</header>
+		<header ng-include="'common/views/header.html'"></header>
+		<!-- ASIDE -->
+		<aside id="asideMenu" ng-show="authenticated"
+			ng-include="'common/views/menu.html'"></aside>
+			
+		<div id="contentWrapper">
 
-		<aside ng-show="authenticated" ng-include="'views/menu.html'"></aside>
-
-		<!-- CONTENT -->
-		<div id="content" ng-view class="container"></div>
+			<!-- CONTENT -->
+			<section id="content" ng-view></section>
+		</div>
 
 		<!-- FOOTER -->
-		<footer>
-			<div class="row">
-				<div class="col-lg-14">
-					<p class="text-center">
-						Copyright &copy; Krystian Habaj 2016<br> <small>Strona
-							wykorzystuje mechanizm cookies w celu utrzymania sesji
-							użytkownika</small>
-					</p>
-				</div>
-			</div>
-		</footer>
+		<footer ng-include="'common/views/footer.html'"></footer>
 
 	</div>
 
@@ -74,8 +38,9 @@
 		type="text/javascript"></script>
 	<script src="webjars/angularjs/1.5.2/angular-route.min.js"
 		type="text/javascript"></script>
-	<script src="js/app.js"></script>
-	<script src="js/controllers.js"></script>
+	<script src="common/js/app.js"></script>
+	<script src="common/js/navigation.js"></script>
+	<script src="registration/registrationController.js"></script>
 
 </body>
 

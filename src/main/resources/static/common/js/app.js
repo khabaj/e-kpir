@@ -4,18 +4,24 @@ var app = angular
 				function($routeProvider, $httpProvider) {
 
 					$routeProvider.when('/', {
-						templateUrl : 'views/home.html',
+						templateUrl : 'common/views/home.html',
 						controller : 'home',
 						controllerAs : 'controller'
 					}).when('/login', {
-						templateUrl : '/views/login.html',
+						templateUrl : 'common/views/login.html',
 						controller : 'navigation',
 						controllerAs : 'controller'
 					}).when('/register', {
-						templateUrl : '/views/registration.html',
+						templateUrl : 'registration/registration.html',
 						controller : 'registration',
 						controllerAs : 'controller'
-					}).otherwise('/');
+					}).when('/contractors', {
+						templateUrl : 'contractors/contractors.html',
+						controller : 'contractors',
+						controllerAs : 'controller'
+					})
+					
+					.otherwise('/');
 
 					$httpProvider.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
 				});

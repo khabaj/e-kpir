@@ -7,11 +7,14 @@ import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
 @Configuration
 @Order(SecurityProperties.ACCESS_OVERRIDE_ORDER)
+@EnableGlobalMethodSecurity(prePostEnabled=true)
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 
 	@Autowired
@@ -19,15 +22,24 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 	
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.httpBasic()
-        		.and()
-                .authorizeRequests()
-                .anyRequest().permitAll()
-                .antMatchers("/api/**").authenticated()
-                .and().logout().logoutSuccessUrl("/")
-                .and().csrf().disable();
+        http
+        	.httpBasic()
+        	.and()
+            .authorizeRequests()
+            .antMatchers("/api/registration").permitAll()
+            .antMatchers("/api/**").authenticated()      
+            .anyRequest().permitAll()
+            .and()
+            .logout().deleteCookies("JSESSIONID").logoutSuccessUrl("/")
+            .and().csrf().disable(); 
         
         http.headers().frameOptions().disable();
+    }
+    
+    @Override
+    public void configure(WebSecurity web) throws Exception {
+    	web.ignoring()
+        .antMatchers("/h2-console/**");
     }
     
     @Override
@@ -35,6 +47,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
     	auth.jdbcAuthentication().dataSource(dataSource)
     		.usersByUsernameQuery("select login, password, 'true' from user where login=?")
     		.authoritiesByUsernameQuery(
-    				"select user.login, user.role from user where user.login=?");
+    				"select user.login, user.role as role from user where user.login=?");
     }
 }

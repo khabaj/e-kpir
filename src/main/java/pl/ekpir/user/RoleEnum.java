@@ -1,6 +1,7 @@
 package pl.ekpir.user;
 
-public enum RoleEnum {
+
+public enum RoleEnum{
     ADMIN,
     USER
 }
