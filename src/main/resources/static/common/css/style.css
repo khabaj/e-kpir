@@ -1,3 +1,17 @@
+#nav-container {
+    z-index: 11;
+    position: absolute;
+    top: 50px;
+    bottom: 0;
+    left: 0px;
+    width: 180px;
+    padding: 0;
+    background-color: #fefefe;
+    -webkit-overflow-scrolling: touch;
+    -webkit-overflow-scrolling: -blackberry-touch;
+}
+
+
 body {
 	font-family: 'Trebuchet MS';
 	color: #333;
@@ -14,24 +28,70 @@ header {
 }
 
 #content {
-	padding: 0px 50px;
+	padding: 10px 40px;
 }
 
-#contentWrapper {
-	min-height: 600px;
-	padding: 70px 0px;
-	height: 100%;
-	margin-top: -51px;
-	margin-bottom: -151px;
+.marginLeft180px {
+	margin-left: 180px;
 }
 
-#asideMenu {
-	padding-top: 30px;
-	width: 150px;
-	float: left;
-	height: 100%;
-	margin-top: -51px;
-	margin-bottom: -151px;
+
+#nav-wrapper {
+    width: 100%;
+    height: 100%;
+    border-right: 2px solid #e5e5e5;
+}
+
+#nav-container ul {
+    padding-left: 0;
+    list-style: none;
+}
+
+#nav > li {
+    position: relative;
+    margin: 0;
+    text-align: left;
+    font-weight: bold;
+}
+
+#nav > li > a {
+    position: relative;
+    display: block;
+    height: 50px;
+    padding: 15px 15px;
+    border-bottom: 1px solid #e5e5e5;
+    -moz-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    -webkit-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+}
+
+
+#nav > li {
+    text-align: left;
+    font-weight: bold;
+}
+
+#nav-container ul {
+    list-style: none;
+}
+
+#nav > li > .icon-has-ul {
+    position: absolute;
+    top: 20px;
+    right: 15px;
+}
+
+#nav > li > a > i {
+    position: relative;
+    display: block;
+    float: left;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    border-right: 1px solid #e5e5e5;
+    text-align: center;
+    margin: -15px 10px -15px -15px;
 }
 
 footer {
@@ -45,28 +105,10 @@ footer {
 	margin: 0;
 }
 
-.side-nav {
-	width: 150px;
-	height: 100%;
-	border-radius: 0;
-	border: none;
-	overflow-y: auto;
-	color: black;
-	border-right: 1px solid #D8D8D8;
+.navbar-right {
+	margin-right: 0px;
 }
 
-.side-nav>li {
-	width: 100%;
-	text-align: center;
-}
-
-.side-nav>li>a>i {
-	font-size: 24px;
-}
-
-#header-right-navbar {
-	padding-right: 15px !important;
-}
 
 .form-signin, .form-signup {
 	margin-top: 200px;

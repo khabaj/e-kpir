@@ -17,31 +17,26 @@
 		<!-- HEADER -->
 		<header ng-include="'common/views/header.html'"></header>
 		<!-- ASIDE -->
-		<aside id="asideMenu" ng-show="authenticated"
+		<aside id="nav-container" ng-show="authenticated"
 			ng-include="'common/views/menu.html'"></aside>
-			
-		<div id="contentWrapper">
 
-			<!-- CONTENT -->
-			<section id="content" ng-view></section>
-		</div>
+		<!-- CONTENT -->
+		<section id="content" ng-view ng-class="{marginLeft180px: authenticated}"></section>
 
-		<!-- FOOTER -->
-		<footer ng-include="'common/views/footer.html'"></footer>
+		<!-- FOOTER 
+			<footer ng-include="'common/views/footer.html'"></footer>-->
 
-	</div>
-
-	<script src="webjars/jquery/2.1.4/jquery.min.js" type="text/javascript"></script>
-	<script type="text/javascript"
-		src="/webjars/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-	<script src="webjars/angularjs/1.5.2/angular.min.js"
-		type="text/javascript"></script>
-	<script src="webjars/angularjs/1.5.2/angular-route.min.js"
-		type="text/javascript"></script>
-	<script src="common/js/app.js"></script>
-	<script src="common/js/navigation.js"></script>
-	<script src="registration/registrationController.js"></script>
-
+		<script src="webjars/jquery/2.1.4/jquery.min.js"
+			type="text/javascript"></script>
+		<script type="text/javascript"
+			src="/webjars/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+		<script src="webjars/angularjs/1.5.2/angular.min.js"
+			type="text/javascript"></script>
+		<script src="webjars/angularjs/1.5.2/angular-route.min.js"
+			type="text/javascript"></script>
+		<script src="common/js/app.js"></script>
+		<script src="common/js/navigation.js"></script>
+		<script src="registration/registrationController.js"></script>
 </body>
 
 </html>

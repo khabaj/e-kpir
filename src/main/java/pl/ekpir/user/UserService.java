@@ -24,4 +24,8 @@ public class UserService {
     public List<UserEntity> getUsers(){
         return userRepository.findAll();
     }
+    
+    public UserEntity getUserById(Long userId){
+        return userRepository.findOne(userId);
+    }
 }

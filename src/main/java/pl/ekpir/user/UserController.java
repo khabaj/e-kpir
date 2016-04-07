@@ -23,6 +23,12 @@ public class UserController {
     public List<UserEntity> getUsersList() {
         return userService.getUsers();
     }
+    
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    @ResponseStatus(HttpStatus.OK)   
+    public UserEntity getUserById(@PathVariable("id") Long id) {
+        return userService.getUserById(id);
+    }
 
     @RequestMapping(value = "/logged", method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)

@@ -1,0 +1,77 @@
+<h2>Dane firmy</h2>
+<hr>
+
+<form class="form-horizontal" ng-submit="">
+	<div class="form-group">
+		<label for="login" class="col-sm-3 control-label">Nazwa firmy:
+		</label>
+		<div class="col-sm-5">
+			<input type="text" name="companyName" class="form-control"
+				placeholder="Nazwa firmy" ng-model="controller.company.name" />
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="login" class="col-sm-3 control-label">Imię: </label>
+		<div class="col-sm-3">
+			<input type="text" name="ownerFirstName" class="form-control" placeholder="Imię"
+				ng-model="controller.company.ownerFirstName" />
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="login" class="col-sm-3 control-label">Nazwisko: </label>
+		<div class="col-sm-3">
+			<input type="text" name="ownerLastName" class="form-control" placeholder="Nazwisko"
+				ng-model="controller.company.ownerLastName" />
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="login" class="col-sm-3 control-label">Numer NIP: </label>
+		<div class="col-sm-3">
+			<input type="text" name="nip" class="form-control" placeholder="NIP"
+				ng-model="controller.company.nip" />
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="login" class="col-sm-3 control-label">REGON: </label>
+		<div class="col-sm-3">
+			<input type="text" name="regon" class="form-control"
+				placeholder="REGON" ng-model="controller.company.regon" />
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="login" class="col-sm-3 control-label">Numer telefonu: </label>
+		<div class="col-sm-3">
+			<input type="text" name="phone" class="form-control"
+				placeholder="Numer telefonu" ng-model="controller.company.phone" />
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="login" class="col-sm-3 control-label">Ulica: </label>
+		<div class="col-sm-4">
+			<input type="text" name="street" class="form-control"
+				placeholder="Ulica" ng-model="controller.company.street" />
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="login" class="col-sm-3 control-label">Miejscowość: </label>
+		<div class="col-sm-4">
+			<input type="text" name="city" class="form-control"
+				placeholder="Miejscowość" ng-model="controller.company.city" />
+		</div>
+	</div>
+	
+	<div class="form-group">
+		<label for="login" class="col-sm-3 control-label">Kod pocztowy: </label>
+		<div class="col-sm-2">
+			<input type="text" name="postalCode" class="form-control"
+				placeholder="Kod pocztowy" ng-model="controller.company.postalCode" />	
+		</div>
+	</div>
+	
+	<br>
+	<div class="form-group">
+		<div class="col-sm-offset-4 col-sm-2">
+			<button type="submit" class="btn btn-success">Zapisz zmiany</button>
+		</div>
+	</div>
+</form>

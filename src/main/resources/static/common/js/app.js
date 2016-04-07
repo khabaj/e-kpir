@@ -19,6 +19,14 @@ var app = angular
 						templateUrl : 'contractors/contractors.html',
 						controller : 'contractors',
 						controllerAs : 'controller'
+					}).when('/company', {
+						templateUrl : 'company/company.html',
+						controller : 'company',
+						controllerAs : 'controller'
+					}).when('/settings', {
+						templateUrl : 'settings/settings.html',
+						controller : 'settings',
+						controllerAs : 'controller'
 					})
 					
 					.otherwise('/');
