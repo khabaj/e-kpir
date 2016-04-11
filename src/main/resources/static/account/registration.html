@@ -1,0 +1,46 @@
+<div class="alert alert-success text-center" ng-show="registered">
+    Użtykownik został zarejestrowany.
+</div>
+
+<div class="alert alert-danger text-center" ng-show="error">
+    Podczas rejestracji wystąpił błąd. Spróbuj ponownie.
+</div>
+
+<form class="form-horizontal" id="registerForm" ng-submit="register()">
+    <h2 class="text-center">Rejestracja</h2>
+    <br>
+    <div class="form-group">
+        <label for="login" class="col-sm-5 control-label">Adres email:
+        </label>
+        <div class="col-sm-7">
+            <input type="text" name="login" class="form-control" id="login"
+                   placeholder="Adres email" required="required"
+                   ng-model="account.email" ng-disabled="registered"/>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="password" class="col-sm-5 control-label">Hasło: </label>
+        <div class="col-sm-7">
+            <input type="password" class="form-control" id="password"
+                   name="password" placeholder="Hasło" required="required"
+                   ng-model="account.password" ng-disabled="registered"/>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="confirmPassword" class="col-sm-5 control-label">Powtórz
+            hasło: </label>
+        <div class="col-sm-7">
+            <input type="password" class="form-control" id="confirmPassword"
+                   name="confirmPassword" placeholder="Powtórz hasło"
+                   required="required" ng-disabled="registered">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-sm-offset-9 col-sm-2">
+            <button type="submit" ng-disabled="registered"
+                    class="btn btn-success">Zarejestruj się
+            </button>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,29 @@
+<nav
+	class="navbar navbar-inverse  navbar-static-top" role="navigation">
+	<div class="navbar-header">
+		<button type="button" class="navbar-toggle" data-toggle="collapse"
+			data-target=".collapse">
+			<span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span>
+			<span class="icon-bar"></span> <span class="icon-bar"></span>
+		</button>
+		<a class="navbar-brand" href="#/">e-kpir</a>
+	</div>
+	<div class="collapse navbar-collapse ">
+		<ul id="header-right-navbar" class="nav navbar-nav navbar-right">
+			<li ng-hide="isLoggedIn()" class="dropdown user-dropdown"><a
+				href ui-sref="register">Załóż konto </a></li>
+			<li ng-hide="isLoggedIn()" class="dropdown user-dropdown"><a
+				href ui-sref="login">Zaloguj się </a></li>
+			<li ng-show="isLoggedIn()" class="dropdown"><a href=""
+				class="dropdown-toggle" data-toggle="dropdown" role="button"
+				aria-haspopup="true" aria-expanded="false"><i
+					class="glyphicon glyphicon-user"></i> {{user()}} <span
+					class="caret"></span></a>
+				<ul class="dropdown-menu">
+					<li><a ui-sref="account">Ustawienia</a></li>
+					<li role="separator" class="divider"></li>
+					<li><a href="" ng-click="logout()">Wyloguj</a></li>
+				</ul></li>
+		</ul>
+	</div>
+</nav>

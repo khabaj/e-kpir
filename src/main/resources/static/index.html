@@ -1,42 +1,46 @@
 <!DOCTYPE html>
-<html lang="lang="pl">
+<html lang=pl" ng-app="ekpir" ng-controller="AppCtrl">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>e-kpir</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title ng-bind="pageTitle"></title>
 
-<link href="webjars/bootstrap/3.3.5/css/bootstrap.min.css"
-	rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="common/css/style.css" />
+    <link href="webjars/bootstrap/3.3.5/css/bootstrap.min.css"
+          rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="common/css/style.css"/>
 
+    <script src="webjars/jquery/2.1.4/jquery.min.js"
+            type="text/javascript"></script>
+    <script type="text/javascript"
+            src="/webjars/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="webjars/angularjs/1.5.2/angular.min.js"
+            type="text/javascript"></script>
+    <script src="webjars/angular-ui-router/0.2.18/angular-ui-router.min.js"
+            type="text/javascript"></script>
+    <script src="webjars/angularjs/1.5.2/angular-resource.min.js"
+            type="text/javascript"></script>
+    <script src="common/js/app.js"></script>
+    <script src="account/account.js"></script>
+    <script src="company/company.js"></script>
 
 </head>
-<body ng-app="ekpir">
+<body >
 
-	<div id="wrapper">
-		<!-- HEADER -->
-		<header ng-include="'common/views/header.html'"></header>
-		<!-- ASIDE -->
-		<aside id="nav-container" ng-show="authenticated"
-			ng-include="'common/views/menu.html'"></aside>
+<div id="wrapper">
+    <!-- HEADER -->
+    <header ng-include="'common/template/header.html'"></header>
+    <!-- ASIDE -->
+    <aside id="nav-container" ng-show="isLoggedIn()"
+           ng-include="'common/template/menu.html'"></aside>
 
-		<!-- CONTENT -->
-		<section id="content" ng-view ng-class="{marginLeft180px: authenticated}"></section>
+    <!-- CONTENT -->
+    <section id="content" ui-view="main" ng-class="{marginLeft180px: isLoggedIn()}"></section>
 
-		<!-- FOOTER 
-			<footer ng-include="'common/views/footer.html'"></footer>-->
+    <!-- FOOTER
+        <footer ng-include="'common/views/footer.html'"></footer>-->
+</div>
 
-		<script src="webjars/jquery/2.1.4/jquery.min.js"
-			type="text/javascript"></script>
-		<script type="text/javascript"
-			src="/webjars/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-		<script src="webjars/angularjs/1.5.2/angular.min.js"
-			type="text/javascript"></script>
-		<script src="webjars/angularjs/1.5.2/angular-route.min.js"
-			type="text/javascript"></script>
-		<script src="common/js/app.js"></script>
-		<script src="common/js/navigation.js"></script>
-		<script src="registration/registrationController.js"></script>
+
 </body>
 
 </html>

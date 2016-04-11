@@ -16,18 +16,24 @@ import java.util.List;
 public class UserController {
 
     @Autowired
-    UserService userService;    
+    UserService userService;
 
     @RequestMapping(method = RequestMethod.GET)
-    @ResponseStatus(HttpStatus.OK)    
+    @ResponseStatus(HttpStatus.OK)
     public List<UserEntity> getUsersList() {
         return userService.getUsers();
     }
-    
+
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    @ResponseStatus(HttpStatus.OK)   
+    @ResponseStatus(HttpStatus.OK)
     public UserEntity getUserById(@PathVariable("id") Long id) {
         return userService.getUserById(id);
+    }
+
+    @RequestMapping(value = "/login/{login}", method = RequestMethod.GET)
+    @ResponseStatus(HttpStatus.OK)
+    public UserEntity getUserByLogin(@PathVariable("login") String login) {
+        return userService.getUserByLogin(login);
     }
 
     @RequestMapping(value = "/logged", method = RequestMethod.GET)

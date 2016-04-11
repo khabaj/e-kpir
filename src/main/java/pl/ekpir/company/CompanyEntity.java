@@ -1,15 +1,8 @@
 package pl.ekpir.company;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
 import pl.ekpir.user.UserEntity;
+
+import javax.persistence.*;
 
 
 @Entity
@@ -48,9 +41,16 @@ public class CompanyEntity {
 	@Column
 	private String postalCode;
 	
-	@OneToOne(fetch=FetchType.LAZY)
+	@OneToOne(fetch=FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "userId")
 	private UserEntity user;
+
+	public CompanyEntity() {
+	}
+
+	public CompanyEntity(UserEntity user) {
+		this.user = user;
+	}
 
 	public Long getCompanyId() {
 		return companyId;
@@ -130,5 +130,9 @@ public class CompanyEntity {
 
 	public void setPostalCode(String postalCode) {
 		this.postalCode = postalCode;
+	}
+
+	public void setUser(UserEntity user) {
+		this.user = user;
 	}
 }

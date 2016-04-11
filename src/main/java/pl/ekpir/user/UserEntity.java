@@ -1,5 +1,7 @@
 package pl.ekpir.user;
 
+import pl.ekpir.company.CompanyEntity;
+
 import javax.persistence.*;
 
 /**
@@ -22,6 +24,17 @@ public class UserEntity {
 
     @Enumerated(EnumType.STRING)
 	private RoleEnum role;
+
+    @OneToOne(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private CompanyEntity company;
+
+    public UserEntity(){
+
+    }
+
+    public UserEntity(Long userId) {
+        this.userId = userId;
+    }
 
     public RoleEnum getRole() {
 		return role;
@@ -53,5 +66,13 @@ public class UserEntity {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public CompanyEntity getCompany() {
+        return company;
+    }
+
+    public void setCompany(CompanyEntity company) {
+        this.company = company;
     }
 }
