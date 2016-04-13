@@ -13,10 +13,14 @@ angular.module('ekpir.company', ['ui.router', 'ngResource'])
 
     .controller('CompanyCtrl', function ($scope, $resource, Company) {
 
-        $scope.company = Company.get({userId: $scope.getUserId()});
+        $scope.company = Company.get({userId: $scope.getUserId()})        	
 
-        $scope.updateCompany = function () {
-            Company.update($scope.company);
+        $scope.updateCompany = function () {        	
+            Company.update($scope.company, function(data){
+            	$scope.updateStatus = "success";
+            }, function(error) {
+            	$scope.updateStatus = "error";
+            });
         }
     });
 

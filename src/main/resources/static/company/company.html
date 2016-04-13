@@ -1,6 +1,14 @@
 <h2>Dane firmy</h2>
 <hr>
 
+<div class="alert alert-success text-center " ng-show="updateStatus=='success'">
+    Zmiany zostały zapisane.
+</div>
+
+<div class="alert alert-danger text-center" ng-show="updateStatus=='error'">
+    Nie udało się zapisać zmian.
+</div>
+
 <form class="form-horizontal" ng-submit="updateCompany()">
 	<div class="form-group">
 		<label for="companyName" class="col-sm-3 control-label">Nazwa firmy:

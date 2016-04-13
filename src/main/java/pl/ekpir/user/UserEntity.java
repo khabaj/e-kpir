@@ -1,8 +1,8 @@
 package pl.ekpir.user;
 
 import pl.ekpir.company.CompanyEntity;
-
 import javax.persistence.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  * Created by Krystian on 2016-03-26.
@@ -11,7 +11,7 @@ import javax.persistence.*;
 @Table(name = "user")
 public class UserEntity {
 
-    @Id
+	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column
     private Long userId;
@@ -25,6 +25,7 @@ public class UserEntity {
     @Enumerated(EnumType.STRING)
 	private RoleEnum role;
 
+    @JsonIgnore
     @OneToOne(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private CompanyEntity company;
 
@@ -67,7 +68,7 @@ public class UserEntity {
     public void setPassword(String password) {
         this.password = password;
     }
-
+        
     public CompanyEntity getCompany() {
         return company;
     }

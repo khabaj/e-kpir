@@ -1,7 +1,6 @@
 package pl.ekpir.company;
 
 import pl.ekpir.user.UserEntity;
-
 import javax.persistence.*;
 
 
@@ -41,7 +40,7 @@ public class CompanyEntity {
 	@Column
 	private String postalCode;
 	
-	@OneToOne(fetch=FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToOne(fetch=FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "userId")
 	private UserEntity user;
 
@@ -135,4 +134,10 @@ public class CompanyEntity {
 	public void setUser(UserEntity user) {
 		this.user = user;
 	}
+
+	public UserEntity getUser() {
+		return user;
+	}
+	
+	
 }

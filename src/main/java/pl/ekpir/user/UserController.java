@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.*;
 import java.security.Principal;
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
+
 /**
  * Created by Krystian on 2016-03-26.
  */
@@ -34,6 +36,17 @@ public class UserController {
     @ResponseStatus(HttpStatus.OK)
     public UserEntity getUserByLogin(@PathVariable("login") String login) {
         return userService.getUserByLogin(login);
+    }
+    
+    @RequestMapping(value = "/{id}/password", method = RequestMethod.PUT)
+    @ResponseStatus(HttpStatus.OK)
+    public void changePassword(@PathVariable("userId") Long userId,
+    								@RequestParam String oldPassword,
+    								@RequestParam String newPassword,
+    								HttpServletResponse response) {
+        if(!userService.changePassword(userId, oldPassword, newPassword)){
+        	response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+        }
     }
 
     @RequestMapping(value = "/logged", method = RequestMethod.GET)
