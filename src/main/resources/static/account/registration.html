@@ -6,7 +6,7 @@
     Podczas rejestracji wystąpił błąd. Spróbuj ponownie.
 </div>
 
-<form class="form-horizontal" id="registerForm" ng-submit="register()">
+<form class="form-horizontal" id="registrationForm" name="registrationForm" ng-submit="register()">
     <h2 class="text-center">Rejestracja</h2>
     <br>
     <div class="form-group">
@@ -16,6 +16,9 @@
             <input type="text" name="login" class="form-control" id="login"
                    placeholder="Adres email" required="required"
                    ng-model="account.email" ng-disabled="registered"/>
+            <ng-messages class="messages" for="registrationForm.login.$error">
+                <div ng-messages-include="validation/messages.html"></div>
+            </ng-messages>
         </div>
     </div>
     <div class="form-group">
@@ -24,6 +27,9 @@
             <input type="password" class="form-control" id="password"
                    name="password" placeholder="Hasło" required="required"
                    ng-model="account.password" ng-disabled="registered"/>
+            <ng-messages class="messages" for="registrationForm.password.$error">
+                <div ng-messages-include="validation/messages.html"></div>
+            </ng-messages>
         </div>
     </div>
     <div class="form-group">
@@ -32,13 +38,17 @@
         <div class="col-sm-7">
             <input type="password" class="form-control" id="confirmPassword"
                    name="confirmPassword" placeholder="Powtórz hasło"
-                   required="required" ng-disabled="registered">
+                   required="required" ng-disabled="registered" ng-model="account.confirmPassword"
+                   pw-check="password">
+            <ng-messages class="messages" for="registrationForm.confirmPassword.$error">
+                <div ng-messages-include="validation/messages.html"></div>
+            </ng-messages>
         </div>
     </div>
 
     <div class="form-group">
         <div class="col-sm-offset-9 col-sm-2">
-            <button type="submit" ng-disabled="registered"
+            <button type="submit" ng-disabled="registered || registrationForm.$invalid"
                     class="btn btn-success">Zarejestruj się
             </button>
         </div>

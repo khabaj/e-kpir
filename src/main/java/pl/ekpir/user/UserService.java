@@ -30,15 +30,15 @@ public class UserService {
     public UserEntity getUserById(Long userId) {
         return userRepository.findOne(userId);
     }
-    
+
     public boolean changePassword(Long userId, String oldPassword, String newPassword) {
-    	UserEntity user = getUserById(userId);
-    	if(user.getPassword().equals(oldPassword)) {
-    		user.setPassword(newPassword);
-    		userRepository.save(user);
-    		return true;
-    	}
-    	return false;
+        UserEntity user = getUserById(userId);
+        if(user.getPassword().equals(oldPassword) && !newPassword.isEmpty()) {
+            user.setPassword(newPassword);
+            userRepository.save(user);
+            return true;
+        }
+        return false;
     }
 
     public UserEntity getUserByLogin(String login) {

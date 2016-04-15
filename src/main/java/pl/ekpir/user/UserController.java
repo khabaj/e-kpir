@@ -4,10 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletResponse;
 import java.security.Principal;
 import java.util.List;
-
-import javax.servlet.http.HttpServletResponse;
+import java.util.Map;
 
 /**
  * Created by Krystian on 2016-03-26.
@@ -37,15 +37,14 @@ public class UserController {
     public UserEntity getUserByLogin(@PathVariable("login") String login) {
         return userService.getUserByLogin(login);
     }
-    
-    @RequestMapping(value = "/{id}/password", method = RequestMethod.PUT)
-    @ResponseStatus(HttpStatus.OK)
-    public void changePassword(@PathVariable("userId") Long userId,
-    								@RequestParam String oldPassword,
-    								@RequestParam String newPassword,
-    								HttpServletResponse response) {
-        if(!userService.changePassword(userId, oldPassword, newPassword)){
-        	response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+
+    @RequestMapping(value = "/{userId}/password", method = RequestMethod.PUT, consumes = "application/json")
+    public void changePassword(@PathVariable("userId") Long userId, @RequestBody Map<String, String> passwordsMap,
+                               HttpServletResponse response) {
+        String oldPassword = passwordsMap.get("oldPassword");
+        String newPassword = passwordsMap.get("newPassword");
+        if (!userService.changePassword(userId, oldPassword, newPassword)) {
+            response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
         }
     }
 

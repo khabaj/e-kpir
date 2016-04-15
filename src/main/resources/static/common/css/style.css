@@ -145,8 +145,20 @@ footer {
 	border-top-right-radius: 0;
 }
 
-#registerForm {
+#registrationForm {
 	max-width: 500px;
 	margin: auto;
 	padding-top: 50px;
+}
+
+.ng-invalid {
+    border-color: red;
+    outline-color: red;
+}
+
+.messages {
+    font-size: smaller;
+    padding-top: 5px;
+    padding-bottom: 10px;
+    color: red;
 }

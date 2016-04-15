@@ -1,17 +1,20 @@
 package pl.ekpir.user;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import pl.ekpir.company.CompanyEntity;
+
 import javax.persistence.*;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  * Created by Krystian on 2016-03-26.
  */
 @Entity
 @Table(name = "user")
+@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="@id")
 public class UserEntity {
 
-	@Id
+    @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column
     private Long userId;
@@ -23,9 +26,8 @@ public class UserEntity {
     private String password;
 
     @Enumerated(EnumType.STRING)
-	private RoleEnum role;
+    private RoleEnum role;
 
-    @JsonIgnore
     @OneToOne(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private CompanyEntity company;
 
@@ -38,14 +40,14 @@ public class UserEntity {
     }
 
     public RoleEnum getRole() {
-		return role;
-	}
+        return role;
+    }
 
-	public void setRole(RoleEnum role) {
-		this.role = role;
-	}
+    public void setRole(RoleEnum role) {
+        this.role = role;
+    }
 
-	public String getLogin() {
+    public String getLogin() {
         return login;
     }
 
@@ -68,7 +70,7 @@ public class UserEntity {
     public void setPassword(String password) {
         this.password = password;
     }
-        
+
     public CompanyEntity getCompany() {
         return company;
     }

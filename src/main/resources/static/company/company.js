@@ -20,7 +20,7 @@ angular.module('ekpir.company', ['ui.router', 'ngResource'])
             	$scope.updateStatus = "success";
             }, function(error) {
             	$scope.updateStatus = "error";
-            });
+            })
         }
     });
 

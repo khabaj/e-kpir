@@ -1,7 +1,8 @@
 angular.module('ekpir', [
         'ekpir.account',
         'ekpir.company',
-        'ui.router'
+        'ui.router',
+        'ekpir.validation'
     ])
     .constant('configuration', {
         apiURL: '/api/'
@@ -37,7 +38,9 @@ angular.module('ekpir', [
                     url: '/account',
                     views: {
                         'main': {
-                            templateUrl: 'account/accountSettings.html'
+                            templateUrl: 'account/accountSettings.html',
+                            controller: 'AccountSettingsCtrl',
+                            controllerAs: 'controller'
                         }
                     },
                     data: {pageTitle: "Ustawienia konta"}

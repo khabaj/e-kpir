@@ -1,11 +1,15 @@
 package pl.ekpir.company;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import pl.ekpir.user.UserEntity;
+
 import javax.persistence.*;
 
 
 @Entity
 @Table(name = "company")
+@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="@id")
 public class CompanyEntity {
 
 	@Id
@@ -18,30 +22,30 @@ public class CompanyEntity {
 
 	@Column
 	private String ownerFirstName;
-	
+
 	@Column
 	private String ownerLastName;
-	
+
 	@Column
 	private Long nip;
-	
+
 	@Column
 	private Long regon;
-	
+
 	@Column
 	private String phone;
-	
+
 	@Column
 	private String street;
-	
+
 	@Column
 	private String city;
-	
+
 	@Column
 	private String postalCode;
-	
+
 	@OneToOne(fetch=FetchType.EAGER, cascade = CascadeType.ALL)
-	@JoinColumn(name = "userId")
+	@JoinColumn(name = "userId", nullable=false)
 	private UserEntity user;
 
 	public CompanyEntity() {
@@ -138,6 +142,6 @@ public class CompanyEntity {
 	public UserEntity getUser() {
 		return user;
 	}
-	
-	
+
+
 }

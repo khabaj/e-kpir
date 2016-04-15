@@ -38,18 +38,20 @@ angular.module('ekpir.account', ['ui.router', 'ngResource'])
     })
 
 
-    .factory('accountService', function ($http) {
+    .factory('accountService', function ($http, configuration, sessionService) {
+
         var service = {};
+
         service.register = function (account) {
             var data = {login: account.email, password: account.password};
-            return $http.post('/api/registration', data);
+            return $http.post(configuration.apiURL + 'registration', data);
         };
-        
-        service.changePassword =
-        	function ($resource, configuration) {
-            
-        });
-        
+
+        service.changePassword = function (oldPassword, newPassword) {
+            var data = {oldPassword: oldPassword, newPassword: newPassword};
+            return $http.put(configuration.apiURL + 'users/' + sessionService.getUserId() + '/password', data);
+        }
+
         return service;
     })
 
@@ -81,18 +83,17 @@ angular.module('ekpir.account', ['ui.router', 'ngResource'])
                 });
         }
     })
-    .factory('Company',
-        function ($resource, configuration) {
-            return $resource(configuration.apiURL + 'company/:companyId', {
-                companyId: '@companyId'
-            }, {
-                update: {
-                    method: 'PUT' // this method issues a PUT request
-                }
-            })
-        })
+    .controller('AccountSettingsCtrl', function ($scope, accountService) {
 
-    .controller('AccountSettingsCtrl', function ($scope, $resource, Company) {
+        $scope.changePassword = function () {
 
-       
+            accountService.changePassword($scope.oldPassword, $scope.newPassword)
+                .success(function (data) {
+                    $scope.passwordChangeStatuss = "success";
+                })
+                .error(function (data) {
+                    $scope.passwordChangeStatuss = "error";
+                })
+        }
     });
+
